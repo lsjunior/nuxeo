@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<div xmlns:a4j="https://ajax4jsf.dev.java.net/ajax"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:nxu="http://nuxeo.org/nxweb/util"
+	xmlns:s="http://jboss.com/products/seam/taglib">
+
+	<h:form prependId="false">
+		<br />
+		<br />
+		<h:outputText value="#{messages['label.test.message']}" /> :
+		<h:inputText id="txMessage" value="#{testBean.message}">
+			<a4j:support event="onblur" reRender="lbMessage" />
+		</h:inputText>
+		<br />
+		<h:outputText id="lbMessage" value="#{testBean.message}" />
+	</h:form>
+
+</div>
