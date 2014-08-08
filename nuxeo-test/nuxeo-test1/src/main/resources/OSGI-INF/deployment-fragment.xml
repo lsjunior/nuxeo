@@ -44,7 +44,7 @@
 	<extension target="web#STD-AUTH-FILTER">
 		<filter-mapping>
 			<filter-name>NuxeoAuthenticationFilter</filter-name>
-			<url-pattern>/nxsmartecm/*</url-pattern>
+			<url-pattern>/test/*</url-pattern>
 			<dispatcher>REQUEST</dispatcher>
 			<dispatcher>FORWARD</dispatcher>
 		</filter-mapping>

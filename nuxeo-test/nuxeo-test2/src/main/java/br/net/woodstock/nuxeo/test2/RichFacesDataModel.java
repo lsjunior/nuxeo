@@ -26,18 +26,23 @@ public class RichFacesDataModel extends SerializableDataModel {
 
 	private String							query;
 
+	private int								rows;
+
 	private DocumentModelList				list;
 
 	private DocumentRef						currentId;
 
-	private Map<DocumentRef, DocumentModel>	wrappedData			= new HashMap<DocumentRef, DocumentModel>();
+	private Map<DocumentRef, DocumentModel>	wrappedData;
 
-	private List<Object>					wrappedKeys			= null;
+	private List<Object>					wrappedKeys;
 
-	public RichFacesDataModel(final CoreSession session, final String query) {
+	public RichFacesDataModel(final CoreSession session, final String query, final int rows) {
 		super();
 		this.session = session;
 		this.query = query;
+		this.rows = rows;
+		this.wrappedKeys = new ArrayList<>();
+		this.wrappedData = new HashMap<>();
 	}
 
 	@Override
@@ -49,13 +54,13 @@ public class RichFacesDataModel extends SerializableDataModel {
 
 			this.list = this.session.query(this.query, null, rows, first, true);
 
-			this.wrappedKeys = new ArrayList<Object>();
-			this.wrappedData = new HashMap<DocumentRef, DocumentModel>();
+			this.wrappedKeys.clear();
+			this.wrappedData.clear();
 
 			for (DocumentModel e : this.list) {
 				this.wrappedKeys.add(e.getRef());
 				this.wrappedData.put(e.getRef(), e);
-				visitor.process(context, e.getId(), argument);
+				visitor.process(context, e.getRef(), argument);
 			}
 		} catch (ClientException e) {
 			throw new IllegalStateException(e);
@@ -72,7 +77,15 @@ public class RichFacesDataModel extends SerializableDataModel {
 
 	@Override
 	public int getRowCount() {
-		return (int) this.list.totalSize();
+		try {
+			if (this.list == null) {
+				this.list = this.session.query(this.query, null, this.rows, 0, true);
+			}
+
+			return (int) this.list.totalSize();
+		} catch (ClientException e) {
+			throw new IllegalStateException(e);
+		}
 	}
 
 	@Override
@@ -81,12 +94,12 @@ public class RichFacesDataModel extends SerializableDataModel {
 			if (this.currentId == null) {
 				return null;
 			}
-			DocumentModel e = this.wrappedData.get(this.currentId);
-			if (e == null) {
-				e = (DocumentModel) this.session.getDocument(this.currentId);
-				this.wrappedData.put(this.currentId, e);
+			DocumentModel d = this.wrappedData.get(this.currentId);
+			if (d == null) {
+				d = this.session.getDocument(this.currentId);
+				this.wrappedData.put(this.currentId, d);
 			}
-			return e;
+			return d;
 		} catch (ClientException e) {
 			throw new IllegalStateException(e);
 		}

@@ -8,15 +8,53 @@
 	xmlns:s="http://jboss.com/products/seam/taglib">
 
 	<h:form prependId="false">
-		<a4j:commandButton action="#{documentSearchBean.search}" reRender="panelDocument" />
+		<table style="width: 500px; margin: auto;">
+			<tr>
+				<td style="width: 20%;">
+					<h:outputText value="#{messages['label.test2.type']}" /> :
+				</td>
+				<td style="width: 80%;">
+					<h:selectOneMenu value="#{documentSearchBean.type}">
+						<f:selectItem itemLabel="File" itemValue="File" />
+						<f:selectItem itemLabel="Folder" itemValue="Folder" />
+					</h:selectOneMenu>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h:outputText value="#{messages['label.test2.name']}" /> :
+				</td>
+				<td>
+					<h:inputText value="#{documentSearchBean.filter}" size="40" />
+				</td>
+			</tr>
+		</table>
+		<div style="text-align: center;">
+			<a4j:commandButton value="${messages['label.test2.search']}" action="#{documentSearchBean.search}" reRender="panelDocument" />
+		</div>
 		<a4j:outputPanel id="panelDocument">
-			<rich:dataTable rows="10" value="#{documentSearchBean.dataModel}" var="document" style="width: 500px; margin: auto;" rendered="#{not empty documentSearchBean.dataModel}">
+			<rich:dataTable rows="#{utilBean.rows}" value="#{documentSearchBean.dataModel}" var="document" style="width: 600px; margin: auto;" rendered="#{not empty documentSearchBean.dataModel}">
 				<rich:column>
 					<f:facet name="header">
-						<h:outputText value="Name" />
+						<h:outputText value="#{messages['label.test2.name']}" />
 					</f:facet>
-					<h:outputText value="#{document.name}" />
+					<h:outputText value="#{document.title}" />
 				</rich:column>
+				<rich:column>
+					<f:facet name="header">
+						<h:outputText value="#{messages['label.test2.path']}" />
+					</f:facet>
+					<h:outputText value="#{document.pathAsString}" />
+				</rich:column>
+				<rich:column>
+					<f:facet name="header">
+						<h:outputText value="#{messages['label.test2.type']}" />
+					</f:facet>
+					<h:outputText value="#{document.type}" />
+				</rich:column>
+				<f:facet name="footer">
+					<rich:datascroller maxPages="5" />
+				</f:facet>
 			</rich:dataTable>
 		</a4j:outputPanel>
 	</h:form>

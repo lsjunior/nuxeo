@@ -1,4 +1,4 @@
-package br.net.woodstock.nuxeo.test.impl;
+package br.net.woodstock.nuxeo.test1;
 
 import java.io.Serializable;
 
