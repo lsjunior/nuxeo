@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Require-Bundle: org.nuxeo.runtime,org.nuxeo.ecm.core.api,org.nuxeo.ecm
+ .core,org.nuxeo.ecm.webapp.core,org.nuxeo.platform.virtualnavigation.
+ web,org.nuxeo.ecm.webapp.ui,org.nuxeo.ecm.webapp.base,org.nuxeo.ecm.p
+ latform.jbpm.api,org.nuxeo.ecm.platform.ui,org.nuxeo.ecm.platform.typ
+ es.api
+Bundle-Vendor: Nuxeo
+Bundle-Version: 5.8
+Bundle-Name: Test
+Bundle-ManifestVersion: 2
+Nuxeo-Component: OSGI-INF/actions-contrib.xml
+Bundle-SymbolicName: test
+Provide-Package: br.net.woodstock.nuxeo.test2

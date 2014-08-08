@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<div xmlns:a4j="https://ajax4jsf.dev.java.net/ajax"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:nxu="http://nuxeo.org/nxweb/util"
+	xmlns:s="http://jboss.com/products/seam/taglib">
+
+	<h:form prependId="false">
+		<a4j:commandButton action="#{documentSearchBean.search}" reRender="panelDocument" />
+		<a4j:outputPanel id="panelDocument">
+			<rich:dataTable rows="10" value="#{documentSearchBean.dataModel}" var="document" style="width: 500px; margin: auto;" rendered="#{not empty documentSearchBean.dataModel}">
+				<rich:column>
+					<f:facet name="header">
+						<h:outputText value="Name" />
+					</f:facet>
+					<h:outputText value="#{document.name}" />
+				</rich:column>
+			</rich:dataTable>
+		</a4j:outputPanel>
+	</h:form>
+
+</div>
