@@ -35,8 +35,8 @@
 
 	<extension target="faces-config#NAVIGATION">
 		<navigation-case>
-			<from-outcome>test</from-outcome>
-			<to-view-id>/test/test.xhtml</to-view-id>
+			<from-outcome>test1</from-outcome>
+			<to-view-id>/test1/test1.xhtml</to-view-id>
 			<redirect />
 		</navigation-case>
 	</extension>
@@ -44,7 +44,7 @@
 	<extension target="web#STD-AUTH-FILTER">
 		<filter-mapping>
 			<filter-name>NuxeoAuthenticationFilter</filter-name>
-			<url-pattern>/test/*</url-pattern>
+			<url-pattern>/test1/*</url-pattern>
 			<dispatcher>REQUEST</dispatcher>
 			<dispatcher>FORWARD</dispatcher>
 		</filter-mapping>

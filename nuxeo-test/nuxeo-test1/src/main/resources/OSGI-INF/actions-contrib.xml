@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<component name="br.net.woodstock.nuxeo.test.Test1" version="2.0.0">
+<component name="br.net.woodstock.nuxeo.test.test1.actions" version="${project.version}">
 
 	<require>org.nuxeo.runtime.started</require>
 
 	<extension target="org.nuxeo.ecm.platform.actions.ActionService" point="actions">
-
-		<!-- <action id="test" link="/test/test.xhtml" label="Test" order="20" type="main_tab"> <category>MAIN_TABS</category> 
-			</action> -->
-
-		<action id="test" link="test" label="Test" order="20" type="main_tab">
-			<category>MAIN_TABS</category>
+		<action id="test1" link="test1" label="Test 1" order="20" type="main_tab">
+			<category>MAIN_TABS</category><!-- SEARCH ACTIONS -->
 		</action>
-
 	</extension>
+	
+	<extension target="org.nuxeo.ecm.platform.actions.ActionService" point="actions">
+		<action type="fancybox" label="Copy Document" include="/test1/copy-window.xhtml" modal="true" height="300" width="400">
+			<category>DOCUMENT_UPPER_ACTION</category>
+		</action>
+	</extension>
+	
+	
 
 </component>

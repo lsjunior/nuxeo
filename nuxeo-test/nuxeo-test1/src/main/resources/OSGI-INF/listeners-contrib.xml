@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="br.net.woodstock.nuxeo.test.test1.listeners" version="${project.version}">
+
+	<require>org.nuxeo.runtime.started</require>
+
+	<extension target="org.nuxeo.ecm.core.event.EventServiceComponent" point="listener">
+		<listener name="checkRemoveEventListener" async="false" postCommit="false" priority="120"
+			class="br.net.woodstock.nuxeo.test1.CheckRemoveEventListener">
+			<event>documentRemoved</event>
+		</listener>
+	</extension>
+	
+	<extension target="org.nuxeo.ecm.core.event.EventServiceComponent" point="listener">
+		<listener name="checkChangeEventListener" async="false" postCommit="false" priority="120"
+			class="br.net.woodstock.nuxeo.test1.CheckChangeEventListener">
+			<event>documentModified</event>
+		</listener>
+	</extension>
+
+</component>

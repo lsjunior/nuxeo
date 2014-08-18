@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="br.net.woodstock.nuxeo.test.test1.uitypes" version="${project.version}">
+
+	<extension target="org.nuxeo.ecm.platform.types.TypeService" point="types">
+		<type id="Copy">
+			<label>Document Copy</label>
+			<description>A Document Copy</description>
+			<icon>/icons/file.gif</icon>
+			<bigIcon>/icons/file_100.png</bigIcon>
+			<category>SimpleDocument</category>
+			<layouts mode="any">
+				<layout>heading</layout>
+			</layouts>
+		</type>
+
+		<type id="Folder">
+			<subtypes>
+				<type>Copy</type>
+			</subtypes>
+		</type>
+		<type id="Workspace">
+			<subtypes>
+				<type>Copy</type>
+			</subtypes>
+		</type>
+	</extension>
+
+</component>
