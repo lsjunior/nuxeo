@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="br.net.woodstock.nuxeo.test.test1.security" version="${project.version}">
+
+	<extension target="org.nuxeo.ecm.core.security.SecurityService" point="policies">
+		<policy name="loadOwnerSecurityPolicy" class="br.net.woodstock.nuxeo.test1.LoadOwnerSecurityPolicy" order="0" />
+	</extension>
+
+</component>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://woodstock.net.br/test1/schemas/load-owner/">
+	<xs:element name="documentId" type="xs:dateTime" />
+	<xs:element name="status" type="xs:boolean" />
+	<xs:element name="checkInUser" type="xs:string" />
+	<xs:element name="checkOutUser" type="xs:string" />
+	<xs:element name="checkInComment" type="xs:string" />
+	<xs:element name="checkOutComment" type="xs:string" />
+	<xs:element name="checkInDate" type="xs:dateTime" />
+	<xs:element name="checkOutDate" type="xs:dateTime" />
+</xs:schema>
