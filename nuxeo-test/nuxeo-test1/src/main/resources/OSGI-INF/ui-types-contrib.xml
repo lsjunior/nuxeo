@@ -5,9 +5,9 @@
 		<type id="Copy">
 			<label>Document Copy</label>
 			<description>A Document Copy</description>
+			<category>SimpleDocument</category>
 			<icon>/icons/file.gif</icon>
 			<bigIcon>/icons/file_100.png</bigIcon>
-			<category>SimpleDocument</category>
 			<default-view>view_documents</default-view>
 			<layouts mode="create">
 				<layout>layout-copy-edit</layout>
@@ -20,15 +20,45 @@
 			</layouts>
 		</type>
 
+		<type id="Domain">
+			<subtypes>
+				<type>WorkspaceUser</type>
+			</subtypes>
+		</type>
+
 		<type id="Folder">
 			<subtypes>
 				<type>Copy</type>
 			</subtypes>
 		</type>
+		
 		<type id="Workspace">
 			<subtypes>
 				<type>Copy</type>
+				<type>Document</type>
 			</subtypes>
+		</type>
+
+		<type id="WorkspaceUser">
+			<label>Workspace User</label>
+			<description></description>
+			<category>SimpleDocument</category>
+			<icon>/img/green_folder16.png</icon>
+			<bigIcon>/img/green_folder100.png</bigIcon>
+			<default-view>view_documents</default-view>
+			<subtypes>
+				<type>Copy</type>
+				<type>Document</type>
+			</subtypes>
+			<layouts mode="create">
+				<layout>layout-workspace-user-edit</layout>
+			</layouts>
+			<layouts mode="edit">
+				<layout>layout-workspace-user-edit</layout>
+			</layouts>
+			<layouts mode="view">
+				<layout>layout-workspace-user-edit</layout>
+			</layouts>
 		</type>
 	</extension>
 
@@ -91,6 +121,56 @@
 					<field>file:content</field>
 					<field>file:filename</field>
 				</fields>
+			</widget>
+		</layout>
+		<layout name="layout-workspace-user-edit">
+			<templates>
+				<template mode="any">/templates/test-default.xhtml</template>
+			</templates>
+			<rows>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">1</property>
+					</properties>
+					<widget>title</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">1</property>
+					</properties>
+					<widget>description</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">1</property>
+					</properties>
+					<widget></widget>
+				</row>
+			</rows>
+			<widget name="title" type="text">
+				<labels>
+					<label mode="any">Title</label>
+				</labels>
+				<translated>false</translated>
+				<fields>
+					<field>dc:title</field>
+				</fields>
+				<properties widgetMode="edit">
+					<property name="styleClass">dataInputText</property>
+					<property name="required">true</property>
+				</properties>
+			</widget>
+			<widget name="description" type="textarea">
+				<labels>
+					<label mode="any">Description</label>
+				</labels>
+				<translated>false</translated>
+				<fields>
+					<field>dc:description</field>
+				</fields>
+				<properties widgetMode="edit">
+					<property name="styleClass">dataInputText</property>
+				</properties>
 			</widget>
 		</layout>
 	</extension>

@@ -1,4 +1,8 @@
 <?xml version="1.0"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://woodstock.net.br/test1/schemas/copy/">
-	<xs:element name="parentUuid" type="xs:string" />
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:nxs="http://woodstock.net.br/test1/schemas/copy/" targetNamespace="http://woodstock.net.br/test1/schemas/copy/">
+	<xs:element name="parentId" type="xs:string" />
+	<xs:element name="copyList" type="nxs:stringList" />
+	<xs:simpleType name="stringList">
+		<xs:list itemType="xs:string" />
+	</xs:simpleType>	
 </xs:schema>

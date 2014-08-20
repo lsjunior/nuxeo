@@ -7,14 +7,21 @@
 		<action id="test1" link="test1" label="Test 1" order="20" type="main_tab">
 			<category>MAIN_TABS</category><!-- SEARCH ACTIONS -->
 		</action>
-	</extension>
-	
-	<extension target="org.nuxeo.ecm.platform.actions.ActionService" point="actions">
-		<action type="fancybox" label="Copy Document" include="/test1/copy-window.xhtml" modal="true" height="300" width="400">
+		<action id="copyWindow" type="fancybox" label="Copy Document" include="/test1/copy-window.xhtml"
+			modal="true" height="300" width="400">
 			<category>DOCUMENT_UPPER_ACTION</category>
 		</action>
+		<action id="viewDoc" link="/test1/view-document.xhtml" order="0"
+			label="View Document" enabled="true">
+			<category>VIEW_ACTION_LIST</category>
+			<filter id="filter-tab-view-doc">
+				<rule grant="true">
+					<type>Copy</type>
+					<type>Document</type>
+					<type>File</type>
+				</rule>
+			</filter>
+		</action>
 	</extension>
-	
-	
 
 </component>
