@@ -18,4 +18,10 @@
 		<facet name="Versionable" />
 	</extension>
 
+	<extension target="org.nuxeo.ecm.core.lifecycle.LifeCycleService" point="types">
+		<types>
+			<type name="Copy">default</type>
+		</types>
+	</extension>
+
 </component>
